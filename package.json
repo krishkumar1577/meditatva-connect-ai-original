@@ -1,0 +1,23 @@
+{
+  "name": "meditatva-connect-ai",
+  "version": "1.0.0",
+  "description": "AI-powered meditation and wellness platform",
+  "scripts": {
+    "dev:frontend": "cd meditatva-frontend && npm run dev",
+    "dev:backend": "cd meditatva-backend && npm run dev",
+    "install:frontend": "cd meditatva-frontend && npm install",
+    "install:backend": "cd meditatva-backend && npm install",
+    "install:all": "npm run install:frontend && npm run install:backend",
+    "build:frontend": "cd meditatva-frontend && npm run build",
+    "start:frontend": "cd meditatva-frontend && npm run preview",
+    "start:backend": "cd meditatva-backend && npm start",
+    "lint:frontend": "cd meditatva-frontend && npm run lint"
+  },
+  "workspaces": [
+    "meditatva-frontend",
+    "meditatva-backend"
+  ],
+  "keywords": ["meditation", "ai", "health", "wellness", "pharmacy", "dashboard"],
+  "author": "Meditatva Team",
+  "license": "ISC"
+}

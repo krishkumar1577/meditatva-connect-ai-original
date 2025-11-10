@@ -1,0 +1,300 @@
+// Mock data for MediTatva prototype
+
+export const mockPharmacies = [
+  {
+    id: "1",
+    name: "HealthPlus Pharmacy",
+    address: "123 Main St, Downtown",
+    distance: "0.5 km",
+    rating: 4.8,
+    reviews: 234,
+    isOpen: true,
+    phone: "+1 234-567-8900",
+    lat: 40.7128,
+    lng: -74.0060,
+  },
+  {
+    id: "2",
+    name: "MediCare Store",
+    address: "456 Park Ave, Central",
+    distance: "1.2 km",
+    rating: 4.6,
+    reviews: 189,
+    isOpen: true,
+    phone: "+1 234-567-8901",
+    lat: 40.7580,
+    lng: -73.9855,
+  },
+  {
+    id: "3",
+    name: "Wellness Pharmacy",
+    address: "789 Oak Rd, Westside",
+    distance: "2.0 km",
+    rating: 4.9,
+    reviews: 312,
+    isOpen: false,
+    phone: "+1 234-567-8902",
+    lat: 40.7489,
+    lng: -73.9680,
+  },
+];
+
+export const mockMedicines = [
+  {
+    id: "1",
+    name: "Paracetamol 500mg",
+    category: "Pain Relief",
+    price: 5.99,
+    inStock: true,
+    quantity: 150,
+    expiryDate: "2025-12-31",
+    manufacturer: "PharmaCorp",
+    description: "Common pain reliever and fever reducer",
+  },
+  {
+    id: "2",
+    name: "Amoxicillin 250mg",
+    category: "Antibiotic",
+    price: 12.99,
+    inStock: true,
+    quantity: 80,
+    expiryDate: "2025-10-15",
+    manufacturer: "MediLabs",
+    description: "Antibiotic for bacterial infections",
+  },
+  {
+    id: "3",
+    name: "Cetirizine 10mg",
+    category: "Allergy",
+    price: 8.49,
+    inStock: true,
+    quantity: 200,
+    expiryDate: "2026-03-20",
+    manufacturer: "AllerCare",
+    description: "Antihistamine for allergies",
+  },
+  {
+    id: "4",
+    name: "Ibuprofen 400mg",
+    category: "Pain Relief",
+    price: 7.99,
+    inStock: false,
+    quantity: 0,
+    expiryDate: "2025-08-10",
+    manufacturer: "PharmaCorp",
+    description: "Anti-inflammatory pain reliever",
+  },
+  {
+    id: "5",
+    name: "Omeprazole 20mg",
+    category: "Digestive",
+    price: 15.99,
+    inStock: true,
+    quantity: 45,
+    expiryDate: "2025-11-30",
+    manufacturer: "GastroMed",
+    description: "Reduces stomach acid production",
+  },
+];
+
+export const mockChatMessages = [
+  {
+    id: "1",
+    senderId: "patient1",
+    senderName: "John Doe",
+    message: "Do you have Paracetamol 500mg in stock?",
+    timestamp: new Date(Date.now() - 3600000),
+    isPatient: true,
+  },
+  {
+    id: "2",
+    senderId: "pharmacy1",
+    senderName: "HealthPlus Pharmacy",
+    message: "Yes, we have it available. Would you like to reserve it?",
+    timestamp: new Date(Date.now() - 3000000),
+    isPatient: false,
+  },
+  {
+    id: "3",
+    senderId: "patient1",
+    senderName: "John Doe",
+    message: "Yes, please reserve 2 packs for me.",
+    timestamp: new Date(Date.now() - 2400000),
+    isPatient: true,
+  },
+  {
+    id: "4",
+    senderId: "pharmacy1",
+    senderName: "HealthPlus Pharmacy",
+    message: "Reserved! You can pick it up within 24 hours.",
+    timestamp: new Date(Date.now() - 1800000),
+    isPatient: false,
+  },
+];
+
+export const mockAnalytics = {
+  topSellingMedicines: [
+    { name: "Paracetamol", sales: 450 },
+    { name: "Amoxicillin", sales: 320 },
+    { name: "Cetirizine", sales: 280 },
+    { name: "Ibuprofen", sales: 240 },
+    { name: "Omeprazole", sales: 180 },
+  ],
+  dailyReservations: [
+    { day: "Mon", count: 25 },
+    { day: "Tue", count: 32 },
+    { day: "Wed", count: 28 },
+    { day: "Thu", count: 35 },
+    { day: "Fri", count: 42 },
+    { day: "Sat", count: 38 },
+    { day: "Sun", count: 20 },
+  ],
+  inventoryTrends: [
+    { month: "Jan", stock: 5000 },
+    { month: "Feb", stock: 4800 },
+    { month: "Mar", stock: 5200 },
+    { month: "Apr", stock: 5500 },
+    { month: "May", stock: 5300 },
+    { month: "Jun", stock: 5800 },
+  ],
+};
+
+export const mockSubstitutes = [
+  {
+    id: "1",
+    original: "Ibuprofen",
+    substitute: "Paracetamol",
+    price: 5.99,
+    savings: "25%",
+    availability: "In Stock",
+    pharmacy: "HealthPlus Pharmacy",
+  },
+  {
+    id: "2",
+    original: "Ibuprofen",
+    substitute: "Aspirin",
+    price: 6.49,
+    savings: "18%",
+    availability: "In Stock",
+    pharmacy: "MediCare Store",
+  },
+  {
+    id: "3",
+    original: "Ibuprofen",
+    substitute: "Naproxen",
+    price: 9.99,
+    savings: "0%",
+    availability: "Limited Stock",
+    pharmacy: "Wellness Pharmacy",
+  },
+];
+
+export const mockRefillReminders = [
+  {
+    id: "1",
+    medicineName: "Paracetamol 500mg",
+    lastRefill: "2025-10-15",
+    nextRefill: "2025-11-15",
+    status: "due-soon",
+    daysLeft: 12,
+    pharmacy: "HealthPlus Pharmacy",
+  },
+  {
+    id: "2",
+    medicineName: "Amoxicillin 250mg",
+    lastRefill: "2025-10-20",
+    nextRefill: "2025-11-03",
+    status: "due-today",
+    daysLeft: 0,
+    pharmacy: "MediCare Store",
+  },
+  {
+    id: "3",
+    medicineName: "Omeprazole 20mg",
+    lastRefill: "2025-09-28",
+    nextRefill: "2025-10-28",
+    status: "overdue",
+    daysLeft: -6,
+    pharmacy: "Wellness Pharmacy",
+  },
+];
+
+export const mockLowStockAlerts = [
+  {
+    id: "1",
+    medicineName: "Ibuprofen 400mg",
+    currentStock: 5,
+    threshold: 20,
+    severity: "critical",
+    lastSold: "2025-11-02",
+    avgDailySales: 3,
+    daysUntilStockout: 2,
+  },
+  {
+    id: "2",
+    medicineName: "Amoxicillin 250mg",
+    currentStock: 15,
+    threshold: 50,
+    severity: "warning",
+    lastSold: "2025-11-03",
+    avgDailySales: 2,
+    daysUntilStockout: 7,
+  },
+  {
+    id: "3",
+    medicineName: "Cetirizine 10mg",
+    currentStock: 8,
+    threshold: 30,
+    severity: "critical",
+    lastSold: "2025-11-03",
+    avgDailySales: 4,
+    daysUntilStockout: 2,
+  },
+];
+
+export const mockPredictiveInsights = [
+  {
+    id: "1",
+    type: "trend",
+    title: "Flu Season Spike Detected",
+    description: "Local searches for 'Flu Medicine' are up 300% in your area.",
+    prediction: "Projected to run out in 5 days",
+    recommendation: "Recommend reordering 50 units of Paracetamol and 30 units of Cetirizine now.",
+    confidence: 94,
+    medicines: ["Paracetamol 500mg", "Cetirizine 10mg"],
+  },
+  {
+    id: "2",
+    type: "seasonal",
+    title: "Allergy Season Approaching",
+    description: "Historical data shows 45% increase in antihistamine demand next week.",
+    prediction: "Stock depletion likely by Nov 10",
+    recommendation: "Stock up on Cetirizine and Loratadine by 40 units each.",
+    confidence: 87,
+    medicines: ["Cetirizine 10mg"],
+  },
+];
+
+export const chatbotResponses = {
+  greeting: [
+    "Hello! I'm MediBot, your AI assistant. How can I help you today?",
+    "Hi there! Looking for medicines or need recommendations?",
+    "Welcome to MediTatva! I'm here to assist you with medicine searches and health queries.",
+  ],
+  medicineSearch: [
+    "I found several pharmacies near you with that medicine. Let me show you the options!",
+    "Great! I've located that medicine at 3 nearby pharmacies. Would you like to see details?",
+  ],
+  substitute: [
+    "I can suggest some alternatives that might work for you. Here are the best options:",
+    "There are a few good substitutes available. Let me show you what's in stock nearby.",
+  ],
+  availability: [
+    "Checking real-time availability at nearby pharmacies... Found it at 2 locations!",
+    "Let me search for that medicine... Available at HealthPlus Pharmacy (0.5km away).",
+  ],
+  default: [
+    "I'm here to help! You can ask me about medicine availability, substitutes, or nearby pharmacies.",
+    "Not sure what you mean, but I can help you find medicines, suggest alternatives, or locate pharmacies!",
+  ],
+};

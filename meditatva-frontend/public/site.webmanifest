@@ -1,0 +1,16 @@
+{
+  "name": "MediTatva - Find Your Medicines Instantly",
+  "short_name": "MediTatva",
+  "description": "AI-powered local medicine finder. Connect with nearby pharmacies, check live stock availability, and get instant medicine recommendations.",
+  "icons": [
+    {
+      "src": "/logo.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ],
+  "theme_color": "#22c55e",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Location Cache - MediTatva</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #0B1220;
+            color: white;
+        }
+        button {
+            background: #14B8A6;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #0D9488;
+        }
+        pre {
+            background: #1F2937;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        .success {
+            color: #10B981;
+        }
+        .error {
+            color: #EF4444;
+        }
+    </style>
+</head>
+<body>
+    <h1>🗺️ Location Cache Manager</h1>
+    <p>Use this tool to debug and clear cached location data.</p>
+    
+    <div>
+        <button onclick="showCache()">Show Cached Location</button>
+        <button onclick="clearCache()">Clear Cache</button>
+        <button onclick="testLocation()">Test Fresh Location</button>
+    </div>
+    
+    <h2>Output:</h2>
+    <pre id="output">Click a button above to start...</pre>
+
+    <script>
+        const output = document.getElementById('output');
+
+        function showCache() {
+            const cached = localStorage.getItem('userLocation');
+            if (cached) {
+                try {
+                    const data = JSON.parse(cached);
+                    output.innerHTML = '<span class="success">✅ Cached Location Found:</span>\n' + 
+                                      JSON.stringify(data, null, 2);
+                } catch (e) {
+                    output.innerHTML = '<span class="error">❌ Error parsing cache:</span>\n' + e.message;
+                }
+            } else {
+                output.innerHTML = '<span class="error">No cached location found</span>';
+            }
+        }
+
+        function clearCache() {
+            localStorage.removeItem('userLocation');
+            output.innerHTML = '<span class="success">✅ Cache cleared successfully!</span>\n' +
+                              'Reload your dashboard to fetch fresh location data.';
+        }
+
+        async function testLocation() {
+            output.textContent = '⏳ Getting your location...';
+            
+            if (!navigator.geolocation) {
+                output.innerHTML = '<span class="error">❌ Geolocation not supported</span>';
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                
+                output.textContent = `📍 GPS Coordinates:\nLatitude: ${lat}\nLongitude: ${lng}\n\n`;
+                output.textContent += '⏳ Fetching address from Nominatim...\n';
+
+                try {
+                    const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`;
+                    const response = await fetch(url, {
+                        headers: { 'User-Agent': 'MediTatva-Debug' }
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    
+                    output.innerHTML = '📍 <span class="success">GPS Coordinates:</span>\n' +
+                                      `Latitude: ${lat}\nLongitude: ${lng}\n\n` +
+                                      '🌍 <span class="success">Nominatim Response:</span>\n' +
+                                      JSON.stringify(data, null, 2);
+
+                    if (data.address) {
+                        const addr = data.address;
+                        const city = addr.city || addr.town || addr.village || 'Unknown';
+                        const state = addr.state || '';
+                        const country = addr.country || '';
+                        
+                        output.innerHTML += `\n\n📌 <span class="success">Extracted Address:</span>\n` +
+                                          `City: ${city}\n` +
+                                          `State: ${state}\n` +
+                                          `Country: ${country}\n` +
+                                          `Display: ${city}${state ? ', ' + state : ''}`;
+                    }
+                } catch (error) {
+                    output.innerHTML += '\n\n<span class="error">❌ Error:</span> ' + error.message;
+                }
+            }, (error) => {
+                output.innerHTML = '<span class="error">❌ Location Error:</span>\n' + error.message;
+            });
+        }
+    </script>
+</body>
+</html>
